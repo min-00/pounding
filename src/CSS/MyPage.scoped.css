@@ -1,0 +1,37 @@
+.profile{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.avatar{
+    margin-right: 15px;
+}
+
+.button{
+    background-color: #f8537b;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.id_card{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+    border-radius: 20px !important;
+    border: 0.5px solid #e7e7e7;
+    background-color: #fff;
+    padding: 20px 0 20px ;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.068);
+}
+
+.menu_list{
+    width: 100%;
+    margin-top: 30px;
+}
+
+.MuiListItemButton-root{
+    margin-left: 30px;
+    padding: 15px 0;
+}

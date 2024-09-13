@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  font-family: "Noto Sans KR";
+  background-color: #f5f5f5;
+}
+
+code {
+  font-family: "Noto Sans KR";
+}
+
+.Nav{
+  z-index: 10000;
+}
+
+/* bottomNavi */
+.MuiBox-root{
+  z-index: 2000;
+}
+
+.Mui-selected{
+  color:#f8537b
+}
+
+.css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root.Mui-selected{
+  color:#f8537b !important;
+}
