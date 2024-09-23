@@ -19,7 +19,6 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import { Margin } from '@mui/icons-material';
 
 function List() {
   const [tasks, setTasks] = useState([]);
@@ -45,9 +44,9 @@ function List() {
   }, []);
 
   // 삭제
-  const removeData = () => {
-    remove(ref(db, "/test/0e24bcf6769"));
-  };
+  // const removeData = () => {
+  //   remove(ref(db, "/test/0e24bcf6769"));
+  // };
 
   return (
     <div>

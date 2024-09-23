@@ -9,6 +9,7 @@ import List from './components/List'
 import MyPage from './components/MyPage'
 import Nav from './components/Nav';
 import DdayAdd from './components/DdayAdd';
+import Weather from './components/Weather';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/list" element={<List />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/ddayadd" element={<DdayAdd />} />
+          <Route path="/weather" element={<Weather />} />
         </Routes>
       </div>
 

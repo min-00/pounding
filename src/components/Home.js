@@ -3,12 +3,12 @@ import '../CSS/Home.scoped.css';
 import { Link } from 'react-router-dom';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../firebase';
+import Weather from './Weather';
 
 // MUI
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import WbSunnyIcon from '@mui/icons-material/WbSunny';
 
 function Home() {
   const [latestTask, setLatestTask] = useState(null);
@@ -69,17 +69,8 @@ function Home() {
         )}
       </div>
 
-      <div className='weather'>
-        <div className='weather_wrap'>
-          <h3>강남구</h3>
-          <h3>30℃</h3>
-        </div>
-        <div className='weather_wrap'>
-          <h3>맑음</h3>
-          <h3>{<WbSunnyIcon />}</h3>
-        </div>
-      </div>
-
+      {<Weather />}
+   
       <Box className="floating" to='/ddayadd' component={Link}>
         <Fab color="primary" aria-label="add">
           <AddIcon />
