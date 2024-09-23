@@ -1,0 +1,52 @@
+.MuiToolbar-root{
+    background-color: white;
+}
+
+
+.css-5iifl-MuiPaper-root-MuiAppBar-root{
+    color : black !important;
+}
+
+/* 앱바 전체 */
+.css-5czdux-MuiPaper-root-MuiAppBar-root{
+    background-color: #fff;
+    color: black;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.267);
+}
+
+/* 앱바 아이콘 */
+.css-qxtsg-MuiButtonBase-root-MuiIconButton-root{
+    margin-right: 0;
+}
+
+/* 앱바 제목 */
+.css-1q3jja0-MuiTypography-root{
+    font-weight: 500 !important;
+    color: rgb(49, 49, 49) !important;
+}
+
+.dday_form{
+    margin-top: 86px;
+    width: 100%;
+}
+
+.form_title{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 5px;
+}
+
+/* 폼 사이즈 */
+.MuiFormControl-root{
+    background-color: #fff;
+    width: 90% !important;
+    margin-bottom: 20px;
+}
+
+
+.sm_btn{
+    background-color: #f8537b;
+    width: 90%;
+    height: 40px;
+    margin-top: 25px;
+}

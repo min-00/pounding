@@ -2,15 +2,18 @@ import React from 'react';
 import './App.css';
 
 //routes
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import MyCalendar from './components/MyCalendar'
 import Home from './components/Home'
 import List from './components/List'
 import MyPage from './components/MyPage'
 import Nav from './components/Nav';
+import DdayAdd from './components/DdayAdd';
 
 
 function App() {
+  const location = useLocation();
+  const hiddenNavParhs = ['/ddayadd']
 
   return (
     <div className="App">
@@ -21,10 +24,11 @@ function App() {
           <Route path="/mycalendar" element={<MyCalendar />} />
           <Route path="/list" element={<List />} />
           <Route path="/mypage" element={<MyPage />} />
+          <Route path="/ddayadd" element={<DdayAdd />} />
         </Routes>
       </div>
 
-      <Nav className="Nav" />
+      {!hiddenNavParhs.includes(location.pathname) && <Nav className="Nav" />}
     </div>
   );
 }

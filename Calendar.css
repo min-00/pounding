@@ -84,6 +84,7 @@ border: 0.5px solid #e7e7e7;
   font: inherit;
   font-size: 13px;
   font-weight: bold;
+
 }
 
 .react-calendar__month-view__days__day--weekend {
@@ -111,6 +112,7 @@ border: 0.5px solid #e7e7e7;
   font: inherit;
   font-size: 10px;
   color: #757575;
+  height: 100%;
 }
 
 .react-calendar__tile:disabled {

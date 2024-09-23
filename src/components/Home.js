@@ -1,50 +1,92 @@
-import React from 'react'
-import '../CSS/Home.scoped.css'
+import React, { useEffect, useState } from 'react';
+import '../CSS/Home.scoped.css';
+import { Link } from 'react-router-dom';
+import { ref, onValue } from 'firebase/database';
+import { db } from '../firebase';
 
-//MUI
+// MUI
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 
 function Home() {
+  const [latestTask, setLatestTask] = useState(null);
+  const [daysLeft, setDaysLeft] = useState(null);
+
+  useEffect(() => {
+    const tasksRef = ref(db, 'dday/'); // 데이터 경로 설정
+
+    // 데이터 읽기
+    onValue(tasksRef, (snapshot) => {
+      const data = snapshot.val();
+      const taskList = [];
+
+      if (data) {
+        for (let id in data) {
+          taskList.push({ id, ...data[id] }); // id와 데이터 합치기
+        }
+      }
+
+      const today = new Date();
+      const upcomingTasks = taskList.filter(task => new Date(task.date) >= today);
+
+      // 최근 데이터 불러오기
+      if (upcomingTasks.length > 0) {
+        const sortedTasks = upcomingTasks.sort((a, b) => new Date(a.date) - new Date(b.date));
+        const latest = sortedTasks[0];
+        setLatestTask(latest);
+
+        // 디데이
+        const dday = new Date(latest.date) - today;
+        setDaysLeft(Math.ceil(dday / (1000 * 60 * 60 * 24))); // 남은 일수
+      }
+    });
+  }, []);
 
   return (
     <div>
       <div className='dday'>
         <div className='img_wrap'>
-          <img src="./IMAGE/Home/poster2.jpg" alt="" />
+          {latestTask ? (
+            <img src={latestTask.imageUrl} alt={latestTask.title} />
+          ) : (
+            <img src="./IMAGE/Home/poster2.jpg" alt="Default" />
+          )}
         </div>
-        <h2>D-DAY</h2>
-        <p>그랜드 민트 페스티벌</p>
-        <div className='button_wrap'>
-          <Stack spacing={2} direction="row">
-            <Button variant="contained">체크리스트</Button>
-            <Button variant="contained">일기남기기</Button>
-          </Stack>
-        </div>
+        <h2>{daysLeft === 0 ? ( // 당일인 경우
+          <p>D-DAY</p>
+        ) : (
+          <p>{daysLeft > 0 ? `D-${daysLeft}` : `D+${Math.abs(daysLeft)}`}</p>
+        )}</h2>
+        {latestTask ? (
+          <>
+            <h3>{latestTask.title}</h3>
+            <p>{latestTask.date}</p>
+          </>
+        ) : (
+          <p>등록된 D-day가 없습니다.</p>
+        )}
       </div>
 
       <div className='weather'>
         <div className='weather_wrap'>
-        <h3>강남구</h3>
-        <h3>30℃</h3>
+          <h3>강남구</h3>
+          <h3>30℃</h3>
         </div>
         <div className='weather_wrap'>
-        <h3>맑음</h3>
-        <h3>{<WbSunnyIcon />}</h3>
+          <h3>맑음</h3>
+          <h3>{<WbSunnyIcon />}</h3>
         </div>
       </div>
 
-      <Box className="floating">
+      <Box className="floating" to='/ddayadd' component={Link}>
         <Fab color="primary" aria-label="add">
           <AddIcon />
         </Fab>
       </Box>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
