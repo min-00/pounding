@@ -10,11 +10,12 @@ import MyPage from './components/MyPage'
 import Nav from './components/Nav';
 import DdayAdd from './components/DdayAdd';
 import Weather from './components/Weather';
+import DdayEdit from './components/DdayEdit';
 
 
 function App() {
   const location = useLocation();
-  const hiddenNavParhs = ['/ddayadd']
+  const hiddenNavParhs = ['/ddayadd','/ddayedit', '/ddayedit/*']
 
   return (
     <div className="App">
@@ -27,10 +28,11 @@ function App() {
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/ddayadd" element={<DdayAdd />} />
           <Route path="/weather" element={<Weather />} />
+          <Route path="/ddayedit" element={<DdayEdit />} />
         </Routes>
       </div>
 
-      {!hiddenNavParhs.includes(location.pathname) && <Nav className="Nav" />}
+      {!hiddenNavParhs.includes(location.pathname) && <Nav />}
     </div>
   );
 }

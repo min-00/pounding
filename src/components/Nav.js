@@ -14,8 +14,9 @@ function Nav() {
     const [value, setValue] = React.useState(0);
 
     return (
-        <Box sx={{ width: 1, position: 'fixed', bottom: 0, left: 0, right: 0 }}>
+        <Box sx={{ width: 1, position: 'fixed', bottom: 0, left: 0, right: 0 }} >
             <BottomNavigation
+                className='nav_color'
                 showLabels
                 value={value}
                 onChange={(event, newValue) => {

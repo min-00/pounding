@@ -17,10 +17,6 @@ code {
   z-index: 2000;
 }
 
-.Mui-selected{
-  color:#f8537b
-}
-
-.css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root.Mui-selected{
+.nav_color .Mui-selected  {
   color:#f8537b !important;
 }

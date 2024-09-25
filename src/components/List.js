@@ -1,8 +1,7 @@
 import '../CSS/List.scoped.css';
-import { ref, child, get } from "firebase/database";
+import { ref, onValue, remove  } from "firebase/database";
 import { db } from "../firebase";
 import { useState, useEffect } from 'react';
-import { onValue } from "firebase/database";
 import { Link } from 'react-router-dom';
 
 // MUI
@@ -19,6 +18,9 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete'; 
+import Button from '@mui/material/Button'; 
+import EditIcon from '@mui/icons-material/Edit';
 
 function List() {
   const [tasks, setTasks] = useState([]);
@@ -43,10 +45,16 @@ function List() {
     });
   }, []);
 
-  // 삭제
-  // const removeData = () => {
-  //   remove(ref(db, "/test/0e24bcf6769"));
-  // };
+  const removeData = (id) => {
+    const taskRef = ref(db, `dday/${id}`);
+    remove(taskRef)
+      .then(() => {
+        console.log('삭제 완료');
+      })
+      .catch((error) => {
+        console.error('삭제 중 오류 발생:', error);
+      });
+  };
 
   return (
     <div>
@@ -82,6 +90,14 @@ function List() {
               </Typography>
             </CardContent>
           </CardActionArea>
+          <Box  className='delete'>
+            <Button>
+            <DeleteIcon onClick={() => removeData(task.id)}  fontSize="large"/> 
+            </Button>
+            <Button component={Link} to={`/ddayedit`} className='edit'>
+            <EditIcon fontSize="large"/> 
+            </Button>
+          </Box>
         </Card>
       ))}
 

@@ -51,7 +51,7 @@ function Home() {
           {latestTask ? (
             <img src={latestTask.imageUrl} alt={latestTask.title} />
           ) : (
-            <img src="./IMAGE/Home/poster2.jpg" alt="Default" />
+            <img src="./IMAGE/Home/heart.png" alt="Default" />
           )}
         </div>
         <h2>{daysLeft === 0 ? ( // 당일인 경우

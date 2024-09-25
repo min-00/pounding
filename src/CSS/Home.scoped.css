@@ -61,9 +61,13 @@
 }
 
 /* 플로팅버튼 */
-.css-9trjq9-MuiButtonBase-root-MuiFab-root {
+.floating > Button{
     background-color: #f8537b !important;
     position: fixed !important;
     bottom: 76px;
     right: 25px;
+}
+
+.floating{
+    z-index: 10000;
 }
